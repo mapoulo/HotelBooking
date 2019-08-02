@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ViewRoomsPage } from '../view-rooms/view-rooms';
-
-
+import * as firebase from 'firebase';
+import { Transporter } from '../../app/firebase';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  sum:number;
+  price=0;
+  rooms = [];
+  ref = firebase.database().ref('rooms/').limitToLast(1);
   constructor(public navCtrl: NavController) {
-
+    this.ref.on('value', address => {
+      this.rooms = Transporter(address);
+    })
   }
-
-  GoToViewRoomsPage(){
-    this.navCtrl.push(ViewRoomsPage);
+  delete(key){
+    firebase.database().ref('rooms/'+key).remove();
   }
-
 }
