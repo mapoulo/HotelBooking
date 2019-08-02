@@ -44,6 +44,7 @@ export class LoginPage {
   Register(){
     this.navCtrl.push(RegisterPage);
   }
+  
   login() {
     this.navCtrl.push(ViewRoomsPage);
   //   if (this.user.email ===undefined && this.user.password===undefined)

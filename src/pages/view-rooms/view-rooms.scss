@@ -3,15 +3,39 @@ page-view-rooms {
     .container{
         display: flex;
         flex-direction: column;
-        height: 100vh;
-        width: 100%;
-        background-color: #e4dede;
+        background-color: #f8f4f4;
     }
 
     .navBar{
         display: flex;
-        height: 20%;
-        width: 100%;
-        background-color: #e4dede;
+        justify-content: space-between;
+        height: 70px;
+        background-color: rgb(91, 182, 235);
+        padding: 2px;
     }
+
+    .One{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+
+    }
+
+    .Emp{
+       
+        border-radius: 50%;
+        width: 10%;
+    }
+
+    .rent{
+        color: white;
+    }
+
+    .card{
+        display: flex;
+        width: 95%;
+        height: 30%;
+    }
+
+
 }

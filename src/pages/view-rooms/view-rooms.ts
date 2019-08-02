@@ -15,6 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ViewRoomsPage {
 
+  M = [
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+    {name: 'Nkwe'},
+  ];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
