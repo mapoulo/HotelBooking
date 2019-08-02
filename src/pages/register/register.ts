@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Users } from '../../app/user';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+
+import * as firebase from 'firebase';
+import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
+
+
+
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,15 +22,55 @@ import { HomePage } from '../home/home';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user =  {} as Users;
+  constructor(
+    public navCtrl: NavController, 
+    public alertCtrl: AlertController,
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  home(){
-    this.navCtrl.push(HomePage);
+  createRegister() {
+    if (this.user.email ===undefined && this.user.password===undefined)
+    {
+      let alertSuccess = this.alertCtrl.create({
+           title: '',
+           subTitle: 'email and password cannot be empty',
+           buttons: ['Ok']
+          });
+          alertSuccess.present();
+        }else{
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      duration: 2000
+    })
+    loading.present();
+    let alertSuccess = this.alertCtrl.create({
+        title: 'Registration',
+        subTitle: 'you have been Successfully Registered. you can Login.',
+        buttons: ['Ok']
+    })
+    firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password).then((result) => {
+      alertSuccess.present();
+      this.navCtrl.push(HomePage);
+    }).catch(function(error) {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      // Handle Errors here.
+      let alert = this.alertCtrl.create({
+        title: errorCode,
+        subTitle: errorMessage,
+        buttons: ['Try Again'],
+    })
+    alert.present();
+    });
+ this.navCtrl.push(HomePage);
   }
+  
+}
 }
