@@ -11,7 +11,7 @@ export class HomePage {
   sum:number;
   price=0;
   rooms = [];
-  ref = firebase.database().ref('rooms/');
+  ref = firebase.database().ref('rooms/').limitToLast(1);
   constructor(public navCtrl: NavController) {
     this.ref.on('value', address => {
       this.rooms = Transporter(address);
