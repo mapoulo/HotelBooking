@@ -23,7 +23,7 @@ page-home {
         display: flex;
         flex-direction: column;
         width: 95%;
-        height: 80%;
+        height: 100%;
         background-color:white;
         border-radius: 10px;
         z-index: 1;
@@ -41,7 +41,7 @@ page-home {
         display: flex;
         justify-content: space-between;
         z-index: 1;
-        height: 20%;
+        height: 14%;
         width: 95%;
         background-color: rgb(91, 182, 235);
         padding-top: 5px;
@@ -68,7 +68,7 @@ page-home {
     .one{
         display: flex;
         width: 53%;
-        background-color: pink;
+
     }
 
     .two{
@@ -146,14 +146,11 @@ page-home {
       height: 15%;
       border-radius: 5px;
       font-size: 30px;
-      transition: 0.3s;
+      background-color: rgb(91, 182, 235);
+      color: white;
     
   }
 
-  .bbt1:hover {
-    background-color:  rgb(91, 182, 235);
-    color: white;
-  }
 
 
 
